@@ -1,0 +1,43 @@
+{% extends "blog/base.html" %}
+
+
+{% block title %}
+    {{ post.title }}
+{% endblock %}
+
+<div class="mt-6 bg-gray-50">
+<!--posts by this author block to be included here-->
+<!--end posts by this author block-->
+    <div class=" px-10 py-6 mx-auto">
+
+            {% block content %}
+             <!--post-featured-image-->
+                <div class="max-w-6xl px-10 py-6 mx-auto bg-gray-50">
+                       
+                        <div class="mt-2">
+                        	<!--post heading-->
+                        	<h2 class="sm:text-3xl md:text-3xl lg:text-3xl xl:text-4xl font-bold text-purple-500  hover:underline">{{ post.title }}</h2>
+
+                                <!--author avator-->
+                               <div class="font-light text-gray-600">
+	                              
+	                        		<a href="#" class="flex items-center mt-6 mb-6">
+	                                    <h1 class="font-bold text-gray-700 hover:underline">By {{ post.author }}</h1><span>Published {{ post.publish }}</span>
+	                                </a>
+                        	  </div>
+                       </div>
+                            <!--post content-->
+                 <div class="max-w-4xl px-10  mx-auto text-2xl text-gray-700 mt-4 rounded bg-gray-100">
+
+                 	<!--content body-->
+                 	<div>
+                    <p class="mt-2 p-8 ">{{ post.body|linebreaks }}</p>
+                </div>
+			</div>
+                    
+      </div>
+            
+    {% endblock %}
+  </div>
+
+</div>

@@ -1,0 +1,37 @@
+{% extends "blog/base.html" %}
+{% block title %}My Blog{% endblock %}
+
+{% block content %}
+<div class="w-full lg:w-6/12">
+<!--blog filter area-->
+    <div class="flex items-center justify-between mb-8">
+                    <h1 class="text-xl font-bold text-green-700 md:text-2xl">Posts</h1>
+
+                    <!--posts filter-->
+                    <div>
+                        <select class="w-full text-green-500 border-gray-300 p-2 rounded-md shadow-sm focus:border-green-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50">
+                            <option class="text-green-500 ">Latest</option>
+                            <option class="text-green-500 ">Last Week</option>
+                        </select>
+                    </div>
+        </div>
+
+        {% for post in posts %}
+        <div class="mt-2">
+            <!--post title-->
+            <a href="{{ post.get_absolute_url }}"
+              class="sm:text-3xl md:text-3xl lg:text-3xl xl:text-4xl font-bold text-purple-500  hover:underline">{{ post.title }}
+              </a>
+              <!--post date and author-->              
+              <p class="text-sm text-gray-500 font-bold ">
+                Published {{ post.publish }} by {{ post.author }}
+             </p>
+             <!--post body-->
+            <p class="mt-2 text-gray-500">{{ post.body|truncatewords:30|linebreaks }}</p>
+         </div>
+        {% endfor %}
+
+    
+    </div>
+    
+ {% endblock %}
